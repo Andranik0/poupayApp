@@ -22,8 +22,41 @@ $app-direction: ltr;
 // To view all the possible Ionic variables, see:
 // http://ionicframework.com/docs/theming/overriding-ionic-variables/
 
+// HEADER NAVBAR
+.bar-header{
+  height: 50px
+}
 
+.bar-header img{
+  display:block;
+  width:120px;
+}
 
+.platform-android .bar-header img {
+  margin:20%;
+}
+
+.platform-ios .bar-header img {
+  margin:auto;
+}
+
+// FEED
+.feed-card img{
+  -webkit-filter: contrast(120%); /* Safari */
+  filter: contrast(120%);
+}
+
+video::-internal-media-controls-download-button {
+    display:none;
+}
+
+video::-webkit-media-controls-enclosure {
+    overflow:hidden;
+}
+
+video::-webkit-media-controls-panel {
+    width: calc(100% + 30px); /* Adjust as needed */
+}
 
 // Named Color Variables
 // --------------------------------------------------
@@ -32,13 +65,38 @@ $app-direction: ltr;
 // to match your app's branding. Ionic uses a Sass map of
 // colors so you can add, rename and remove colors as needed.
 // The "primary" color is the only required color in the map.
+// #E20026
+// #A11C4D
+// #01246A
+// #E2002
 
 $colors: (
   primary:    #488aff,
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
-  dark:       #222
+  dark:       #222,
+  poupay: (
+    base:      #000,
+    contrast:  #fff
+  ),
+  boukiTv: (
+    base:      #E20026,
+    contrast:  #fff
+  ),
+  lesGifs: (
+    base:      #01246A,
+    contrast:  #fff
+  ),
+  soundBox: (
+    base:      #A11C4D,
+    contrast:  #fff
+  ),
+  messages: (
+    base:      #237F35,
+    contrast:  #fff
+  )
+
 );
 
 
@@ -46,22 +104,19 @@ $colors: (
 // --------------------------------------------------
 // iOS only Sass variables can go here
 
-
-
+$tabs-ios-tab-font-size: 9px;
 
 // App Material Design Variables
 // --------------------------------------------------
 // Material Design only Sass variables can go here
 
-
-
+$tabs-md-tab-font-size: 9px;
 
 // App Windows Variables
 // --------------------------------------------------
 // Windows only Sass variables can go here
 
-
-
+$tabs-wp-tab-font-size: 9px;
 
 // App Theme
 // --------------------------------------------------

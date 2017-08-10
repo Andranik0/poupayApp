@@ -1,5 +1,5 @@
 {
-  "name": "poupayApp",
+  "name": "poupayapp",
   "version": "0.0.1",
   "author": "Ionic Framework",
   "homepage": "http://ionicframework.com/",
@@ -26,13 +26,19 @@
     "@ionic/storage": "2.0.1",
     "ionic-angular": "3.5.3",
     "ionicons": "3.0.0",
+    "mysql": "^2.13.0",
     "rxjs": "5.4.0",
     "sw-toolbox": "3.6.0",
     "zone.js": "0.8.12"
   },
   "devDependencies": {
     "@ionic/app-scripts": "2.0.2",
+    "@ionic/cli-plugin-cordova": "1.6.2",
+    "@ionic/cli-plugin-ionic-angular": "1.4.1",
+    "ionic": "3.7.0",
     "typescript": "2.3.4"
   },
-  "description": "An Ionic project"
+  "description": "An Ionic project",
+  "main": "index.js",
+  "license": "ISC"
 }

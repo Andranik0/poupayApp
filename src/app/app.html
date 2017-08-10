@@ -1,1 +1,22 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<ion-menu [content]="content">
+  <ion-header>
+    <ion-toolbar color="poupay">
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <button ion-item (click)="openPage()">
+        <ion-icon name='ribbon'></ion-icon> Galerie des héros
+      </button>
+      <button ion-item (click)="openPage()">
+        <ion-icon name='trophy'></ion-icon> Accomplissements
+      </button>
+      <button ion-item (click)="presentModal()">
+        <ion-icon name='cart'></ion-icon> La BoukiBoutique
+      </button>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-nav #content [root]="rootPage"></ion-nav>
