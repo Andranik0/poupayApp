@@ -13,7 +13,7 @@ export class ApiProvider {
 
   constructor(public http: Http) { }
 
-  domain = "http://localhost:3000/api/";
+  domain = "https://poupay-api.herokuapp.com/api/";
 
   // GET POSTS
   getFeedPosts() {
