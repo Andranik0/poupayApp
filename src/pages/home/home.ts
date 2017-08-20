@@ -8,11 +8,17 @@ import { ApiProvider } from './../../providers/api/api';
   templateUrl: 'home.html'
 })
 export class HomePage {
-  users: Observable<any>;
+  USER: Observable<any>;
+  userMoney: number;
+  
   posts: Observable<any>;
 
   constructor(public navCtrl: NavController, public apiProvider: ApiProvider) {
-    this.users = this.apiProvider.getUser();
+    this.USER = this.apiProvider.getUser();
+    this.USER.subscribe(data => {
+      this.userMoney = data[0].money;
+    });
+
     this.posts = this.apiProvider.getFeedPosts();
   }
 

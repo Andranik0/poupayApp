@@ -22,7 +22,7 @@ export class MyApp {
     });
   }
 
-  presentModal() {
+  boutiqueModal() {
     let modal = this.modalCtrl.create(BoukiBoutiquePage);
     modal.present();
   }

@@ -13,42 +13,45 @@ export class ApiProvider {
 
   constructor(public http: Http) { }
 
-  domain = "https://poupay-api.herokuapp.com/api/";
+  DOMAIN = "https://poupay-api.herokuapp.com/api/";
 
   // GET POSTS
   getFeedPosts() {
-    //http://swapi.co/api/film
     // .subscribe(data => { console.log('my data: ', data); })
-    return this.http.get(this.domain + 'feed').map(res => res.json());
+    return this.http.get(this.DOMAIN + 'feed').map(res => res.json());
   }
 
   getGifsPosts() {
-    //http://swapi.co/api/film
     // .subscribe(data => { console.log('my data: ', data); })
-    return this.http.get(this.domain + 'gifs').map(res => res.json());
+    return this.http.get(this.DOMAIN + 'gifs').map(res => res.json());
   }
 
   getBoukiTvPosts() {
-    //http://swapi.co/api/film
     // .subscribe(data => { console.log('my data: ', data); })
-    return this.http.get(this.domain + 'boukiTv').map(res => res.json());
+    return this.http.get(this.DOMAIN + 'boukiTv').map(res => res.json());
   }
 
   getSoundBox() {
-    //http://swapi.co/api/film
     // .subscribe(data => { console.log('my data: ', data); })
-    return this.http.get(this.domain + 'soundBox').map(res => res.json());
+    return this.http.get(this.DOMAIN + 'soundBox').map(res => res.json());
   }
 
-  getBoukiBoutique() {
-    //http://swapi.co/api/film
+  getBoukiBoutique(type) {
     // .subscribe(data => { console.log('my data: ', data); })
-    return this.http.get(this.domain + 'boukiBoutique').map(res => res.json());
+    return this.http.get(this.DOMAIN + 'boukiBoutique/' + type).map(res => res.json());
   }
 
   // OTHER FUNCTIONS
   getUser() {
-    return this.http.get(this.domain + 'user').map(res => res.json());
+    return this.http.get(this.DOMAIN + 'user').map(res => res.json());
+  }
+
+  setUserMoney(newValue){
+    return this.http.get(this.DOMAIN + 'user/setMoney/' + newValue).map(res => res.json());
+  }
+
+  setContentUnlocked(postId){
+    return this.http.get(this.DOMAIN + 'content/setUnlocked/' + postId).map(res => res.json());
   }
 
 }

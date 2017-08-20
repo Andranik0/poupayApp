@@ -9,8 +9,8 @@
     </ion-title>
 
     <ion-buttons end>
-      <button ion-button *ngFor="let user of (users | async)">
-        <p>{{ user.money }} <ion-icon name='aperture'></ion-icon></p>
+      <button ion-button>
+        <p>{{ userMoney }} <ion-icon name='aperture'></ion-icon></p>
       </button>
     </ion-buttons>
   </ion-navbar>

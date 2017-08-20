@@ -8,11 +8,17 @@ import { ApiProvider } from './../../providers/api/api';
   templateUrl: 'soundbox.html'
 })
 export class SoundBoxPage {
-  users: Observable<any>;
+  USER: Observable<any>;
+  userMoney: number;
+  
   posts: Observable<any>;
 
   constructor(public navCtrl: NavController, public apiProvider: ApiProvider) {
-    this.users = this.apiProvider.getUser();
+    this.USER = this.apiProvider.getUser();
+    this.USER.subscribe(data => {
+      this.userMoney = data[0].money;
+    });
+
     this.posts = this.apiProvider.getSoundBox();
   }
 

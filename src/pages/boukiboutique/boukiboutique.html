@@ -4,6 +4,11 @@
       <ion-icon name='cart'></ion-icon> La BoukiBoutique
     </ion-title>
     <ion-buttons start>
+      <button ion-button>
+        <p>{{ userMoney }} <ion-icon name='aperture'></ion-icon></p>
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
       <button ion-button (click)="dismiss()">
         <span ion-text color="primary" showWhen="ios">Cancel</span>
         <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
@@ -13,14 +18,68 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-item *ngFor="let post of (posts | async)">
-      <ion-thumbnail item-start>
-        <img src="assets/img/content/{{ post.src }}">
-      </ion-thumbnail>
-      <h2>My Neighbor Totoro</h2>
-      <p>Hayao Miyazaki • 1988</p>
-      <button ion-button clear item-end>Acheter</button>
-    </ion-item>
-  </ion-list>
+  <div padding>
+    <ion-segment [(ngModel)]="category">
+      <ion-segment-button value="images">
+        Images
+      </ion-segment-button>
+      <ion-segment-button value="videos">
+        Vidéos
+      </ion-segment-button>
+      <ion-segment-button value="gifs">
+        Gifs
+      </ion-segment-button>
+      <ion-segment-button value="sons">
+        Sons
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <div [ngSwitch]="category">
+    <ion-list *ngSwitchCase="'images'">
+      <ion-item *ngFor="let post of (posts_images | async)">
+        <ion-avatar item-start>
+          <img src="assets/img/content/{{ post.src }}" class="floue">
+        </ion-avatar>
+        <h2>{{ post.title }}</h2>
+        <p>{{ post.category }}</p>
+        <h3>Prix: {{ post.prix }} <ion-icon name='aperture'></ion-icon></h3>
+        <button ion-button clear item-end (click)="buy(post)"><br/>Acheter</button>
+      </ion-item>
+    </ion-list>
+
+    <!-- <ion-list *ngSwitchCase="'videos'">
+      <ion-item *ngFor="let post of (posts_videos | async)">
+        <ion-thumbnail item-start>
+          <img src="assets/img/content/{{ post.src }}">
+        </ion-thumbnail>
+        <h2>{{ post.title }}</h2>
+        <p>{{ post.category }}</p>
+        <button ion-button clear item-end>3 <ion-icon name='aperture'></ion-icon><br/>Acheter</button>
+      </ion-item>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'gifs'">
+      <ion-item *ngFor="let post of (posts_gifs | async)">
+        <ion-thumbnail item-start>
+          <img src="assets/img/content/{{ post.src }}">
+        </ion-thumbnail>
+        <h2>{{ post.title }}</h2>
+        <p>{{ post.category }}</p>
+        <button ion-button clear item-end>3 <ion-icon name='aperture'></ion-icon><br/>Acheter</button>
+      </ion-item>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'sons'">
+      <ion-item *ngFor="let post of (posts_audios | async)">
+        <ion-thumbnail item-start>
+          <img src="assets/img/content/{{ post.src }}">
+        </ion-thumbnail>
+        <h2>{{ post.title }}</h2>
+        <p>{{ post.category }}</p>
+        <button ion-button clear item-end>3 <ion-icon name='aperture'></ion-icon><br/>Acheter</button>
+      </ion-item>
+    </ion-list> -->
+
+  </div>
 </ion-content>
