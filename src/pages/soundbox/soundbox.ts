@@ -10,20 +10,35 @@ import { ApiProvider } from './../../providers/api/api';
 export class SoundBoxPage {
   USER: Observable<any>;
   userMoney: number;
-  
+
   posts: Observable<any>;
 
   constructor(public navCtrl: NavController, public apiProvider: ApiProvider) {
+    this.LoadData();
+  }
+
+  playAudio(src) {
+    return 0;
+  }
+
+  doRefresh(refresher) {
+    console.log('Begin async operation', refresher);
+    this.refreshPage();
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      refresher.complete();
+    }, 2000);
+  }
+
+  LoadData() {
     this.USER = this.apiProvider.getUser();
     this.USER.subscribe(data => {
       this.userMoney = data[0].money;
     });
-
     this.posts = this.apiProvider.getSoundBox();
   }
 
-  playAudio(src){
-    return 0;
+  refreshPage() {
+    this.LoadData();
   }
-
 }

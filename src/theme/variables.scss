@@ -24,7 +24,7 @@ $app-direction: ltr;
 }
 
 .platform-android .bar-header img {
-  margin: 20%;
+  margin: 23%;
 }
 
 .platform-ios .bar-header img {
@@ -52,12 +52,21 @@ video::-webkit-media-controls-panel {
 }
 // GENERAL
 
-.floue {
+.blur-img {
   filter: blur(2px);
   -webkit-filter: blur(2px);
   -moz-filter: blur(2px);
   -o-filter: blur(2px);
   -ms-filter: blur(2px);
+}
+
+.nothingToDisplay{
+  width:250px;
+  opacity:0.7;
+  padding:10px;
+  margin:auto;
+  display: block;
+  margin-top:40px;
 }
 
 // Named Color Variables

@@ -18,6 +18,15 @@
 
 <ion-content overflow-scroll="true">
 
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content>
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <div *ngIf='(posts | async)?.length === 0'>
+    <img src="assets/img/rienAafficher.png" class="nothingToDisplay"/>
+  </div>
+
   <ion-card *ngFor="let post of (posts | async)" class="feed-card">
 
     <ion-card-content>

@@ -18,15 +18,7 @@ export class BoukiBoutiquePage {
   posts_audios: Observable<any>;
 
   constructor(public navCtrl: NavController, public apiProvider: ApiProvider, public viewCtrl: ViewController, public alertCtrl: AlertController) {
-    this.USER = this.apiProvider.getUser();
-    this.USER.subscribe(data => {
-      this.userMoney = data[0].money;
-    });
-
-    this.posts_images = this.apiProvider.getBoukiBoutique('img');
-    this.posts_videos = this.apiProvider.getBoukiBoutique('video');
-    this.posts_gifs = this.apiProvider.getBoukiBoutique('gif');
-    this.posts_audios = this.apiProvider.getBoukiBoutique('audio');
+    this.LoadData();
 
     this.category = "images";
   }
@@ -49,8 +41,7 @@ export class BoukiBoutiquePage {
               console.log('Agree clicked');
               this.apiProvider.setUserMoney(this.userMoney-post.prix);
               this.apiProvider.setContentUnlocked(post.id);
-              // this.navCtrl.pop();
-              // this.navCtrl.push(BoukiBoutiquePage);
+              this.refreshPage();
             }
           }
         ]
@@ -65,6 +56,22 @@ export class BoukiBoutiquePage {
       });
       alert.present();
     }
+  }
+
+  LoadData(){
+    this.USER = this.apiProvider.getUser();
+    this.USER.subscribe(data => {
+      this.userMoney = data[0].money;
+    });
+
+    this.posts_images = this.apiProvider.getBoukiBoutique('img');
+    this.posts_videos = this.apiProvider.getBoukiBoutique('video');
+    this.posts_gifs = this.apiProvider.getBoukiBoutique('gif');
+    this.posts_audios = this.apiProvider.getBoukiBoutique('audio');
+  }
+
+  refreshPage() {
+    this.LoadData();
   }
 
   dismiss() {

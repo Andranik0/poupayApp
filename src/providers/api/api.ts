@@ -47,11 +47,11 @@ export class ApiProvider {
   }
 
   setUserMoney(newValue){
-    return this.http.get(this.DOMAIN + 'user/setMoney/' + newValue).map(res => res.json());
+    this.http.get(this.DOMAIN + 'user/setMoney/' + newValue).subscribe(data => { console.log('User money: ', data); });
   }
 
   setContentUnlocked(postId){
-    return this.http.get(this.DOMAIN + 'content/setUnlocked/' + postId).map(res => res.json());
+    this.http.get(this.DOMAIN + 'content/setUnlocked/' + postId).subscribe(data => { console.log('Post Unlocked: ', data); });
   }
 
 }
