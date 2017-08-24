@@ -29,7 +29,7 @@
       <ion-segment-button value="gifs">
         Gifs
       </ion-segment-button>
-      <ion-segment-button value="sons">
+      <ion-segment-button value="audios">
         Sons
       </ion-segment-button>
     </ion-segment>
@@ -37,6 +37,9 @@
 
   <div [ngSwitch]="category">
     <ion-list *ngSwitchCase="'images'">
+      <div *ngIf='(posts_images | async)?.length === 0'>
+        <img src="assets/img/rienAafficher.png" class="nothingToDisplay" />
+      </div>
       <ion-item *ngFor="let post of (posts_images | async)">
         <ion-avatar item-start>
           <img src="assets/img/content/{{ post.src }}" class="blur-img">
@@ -49,6 +52,9 @@
     </ion-list>
 
     <ion-list *ngSwitchCase="'videos'">
+      <div *ngIf='(posts_videos | async)?.length === 0'>
+        <img src="assets/img/rienAafficher.png" class="nothingToDisplay" />
+      </div>
       <ion-item *ngFor="let post of (posts_videos | async)">
         <ion-avatar item-start>
           <img src="assets/img/videoGenerique.png" class="blur-img">
@@ -61,7 +67,10 @@
     </ion-list>
 
     <ion-list *ngSwitchCase="'gifs'">
-      <ion-item *ngFor="let post of (posts_audios | async)">
+      <div *ngIf='(posts_gifs | async)?.length === 0'>
+        <img src="assets/img/rienAafficher.png" class="nothingToDisplay" />
+      </div>
+      <ion-item *ngFor="let post of (posts_gifs | async)">
         <ion-avatar item-start>
           <img src="assets/img/content/{{ post.src }}" class="blur-img">
         </ion-avatar>
@@ -73,6 +82,9 @@
     </ion-list>
 
     <ion-list *ngSwitchCase="'audios'">
+      <div *ngIf='(posts_audios | async)?.length === 0'>
+        <img src="assets/img/rienAafficher.png" class="nothingToDisplay" />
+      </div>
       <ion-item *ngFor="let post of (posts_audios | async)">
         <ion-avatar item-start>
           <img src="assets/img/content/{{ post.src }}" class="blur-img">

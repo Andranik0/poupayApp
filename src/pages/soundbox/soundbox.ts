@@ -17,10 +17,6 @@ export class SoundBoxPage {
     this.LoadData();
   }
 
-  playAudio(src) {
-    return 0;
-  }
-
   doRefresh(refresher) {
     console.log('Begin async operation', refresher);
     this.refreshPage();

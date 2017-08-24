@@ -14,6 +14,7 @@ export class HomePage {
   posts: Observable<any>;
 
   constructor(public navCtrl: NavController, public apiProvider: ApiProvider, public loadingCtrl: LoadingController, public http: Http) {
+    this.apiProvider.dailyConnectAward();
     this.LoadData();
   }
 

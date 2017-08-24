@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
+import { AlertController } from 'ionic-angular';
 
 /*
   Generated class for the ApiProvider provider.
@@ -11,7 +12,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class ApiProvider {
 
-  constructor(public http: Http) { }
+  constructor(public http: Http, public alertCtrl: AlertController) { }
 
   DOMAIN = "https://poupay-api.herokuapp.com/api/";
 
@@ -46,12 +47,25 @@ export class ApiProvider {
     return this.http.get(this.DOMAIN + 'user').map(res => res.json());
   }
 
-  setUserMoney(newValue){
+  setUserMoney(newValue) {
     this.http.get(this.DOMAIN + 'user/setMoney/' + newValue).subscribe(data => { console.log('User money: ', data); });
   }
 
-  setContentUnlocked(postId){
+  setContentUnlocked(postId) {
     this.http.get(this.DOMAIN + 'content/setUnlocked/' + postId).subscribe(data => { console.log('Post Unlocked: ', data); });
+  }
+
+  dailyConnectAward() {
+    this.http.get(this.DOMAIN + 'user/connectAward').map(res => res.json()).subscribe(data => {
+      if (data.affectedRows > 0) {
+        let alert = this.alertCtrl.create({
+          title: 'Bravo Poupay!',
+          subTitle: 'C\'est la première fois que tu te connectes aujourd\'hui, tu gagnes 1 pièce Bishoue !',
+          buttons: ['Ouaiiiis!']
+        });
+        alert.present();
+      }
+    });
   }
 
 }

@@ -24,7 +24,7 @@ export class BoukiBoutiquePage {
   }
 
   buy(post) {
-    if (post.prix<this.userMoney) {
+    if (post.prix<=this.userMoney) {
       let confirm = this.alertCtrl.create({
         title: 'Tu veux acheter cet item, Poups ?',
         message: 'Tu ne le regretteras pas, c\'est de la qualité, noui noui.',
