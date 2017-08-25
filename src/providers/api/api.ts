@@ -14,49 +14,50 @@ export class ApiProvider {
 
   constructor(public http: Http, public alertCtrl: AlertController) { }
 
-  DOMAIN = "https://poupay-api.herokuapp.com/api/";
+  // GLOBAL VARS ------------------------------------------------------
+  // ASSETS_DOMAIN = "assets/img";
+  ASSETS_DOMAIN = "http://flywithmint.esy.es/poupayApp/assets";
+  API_DOMAIN = "https://poupay-api.herokuapp.com/api/";
 
-  // GET POSTS
+  // GET AND SET functions --------------------------------------------
+  // CONTENT functions  -
   getFeedPosts() {
     // .subscribe(data => { console.log('my data: ', data); })
-    return this.http.get(this.DOMAIN + 'feed').map(res => res.json());
+    return this.http.get(this.API_DOMAIN + 'feed').map(res => res.json());
   }
 
   getGifsPosts() {
-    // .subscribe(data => { console.log('my data: ', data); })
-    return this.http.get(this.DOMAIN + 'gifs').map(res => res.json());
+    return this.http.get(this.API_DOMAIN + 'gifs').map(res => res.json());
   }
 
   getBoukiTvPosts() {
-    // .subscribe(data => { console.log('my data: ', data); })
-    return this.http.get(this.DOMAIN + 'boukiTv').map(res => res.json());
+    return this.http.get(this.API_DOMAIN + 'boukiTv').map(res => res.json());
   }
 
   getSoundBox() {
-    // .subscribe(data => { console.log('my data: ', data); })
-    return this.http.get(this.DOMAIN + 'soundBox').map(res => res.json());
+    return this.http.get(this.API_DOMAIN + 'soundBox').map(res => res.json());
   }
 
   getBoukiBoutique(type) {
-    // .subscribe(data => { console.log('my data: ', data); })
-    return this.http.get(this.DOMAIN + 'boukiBoutique/' + type).map(res => res.json());
-  }
-
-  // OTHER FUNCTIONS
-  getUser() {
-    return this.http.get(this.DOMAIN + 'user').map(res => res.json());
-  }
-
-  setUserMoney(newValue) {
-    this.http.get(this.DOMAIN + 'user/setMoney/' + newValue).subscribe(data => { console.log('User money: ', data); });
+    return this.http.get(this.API_DOMAIN + 'boukiBoutique/' + type).map(res => res.json());
   }
 
   setContentUnlocked(postId) {
-    this.http.get(this.DOMAIN + 'content/setUnlocked/' + postId).subscribe(data => { console.log('Post Unlocked: ', data); });
+    this.http.get(this.API_DOMAIN + 'content/setUnlocked/' + postId).subscribe(data => { console.log('Post Unlocked: ', data); });
+  }
+
+
+  // USER functions  -
+  getUser() {
+    return this.http.get(this.API_DOMAIN + 'user').map(res => res.json());
+  }
+
+  setUserMoney(newValue) {
+    this.http.get(this.API_DOMAIN + 'user/setMoney/' + newValue).subscribe(data => { console.log('User money: ', data); });
   }
 
   dailyConnectAward() {
-    this.http.get(this.DOMAIN + 'user/connectAward').map(res => res.json()).subscribe(data => {
+    this.http.get(this.API_DOMAIN + 'user/connectAward').map(res => res.json()).subscribe(data => {
       if (data.affectedRows > 0) {
         let alert = this.alertCtrl.create({
           title: 'Bravo Poupay!',
@@ -66,6 +67,12 @@ export class ApiProvider {
         alert.present();
       }
     });
+  }
+
+  // GLOBAL function  -
+  // The function which returns the domain of the content (pictures, audios, videos...) server
+  GetAssetsDomain(){
+    return this.ASSETS_DOMAIN;
   }
 
 }

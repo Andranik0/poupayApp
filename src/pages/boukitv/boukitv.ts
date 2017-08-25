@@ -10,10 +10,12 @@ import { ApiProvider } from './../../providers/api/api';
 export class BoukiTvPage {
   USER: Observable<any>;
   userMoney: number;
+  assets: string;
 
   posts: Observable<any>;
 
   constructor(public navCtrl: NavController, public apiProvider: ApiProvider) {
+    this.assets = this.apiProvider.GetAssetsDomain();
     this.LoadData();
   }
 

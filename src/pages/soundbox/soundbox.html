@@ -5,7 +5,7 @@
     </button>
 
     <ion-title>
-      <img src="/assets/img/soundbox-poupayApp.png" alt="logoApp" />
+      <img src="{{assets}}/soundbox-poupayApp.png" alt="logoApp" />
     </ion-title>
 
     <ion-buttons end>
@@ -24,18 +24,18 @@
   </ion-refresher>
 
   <div *ngIf='(posts | async)?.length === 0'>
-    <img src="assets/img/rienAafficher.png" class="nothingToDisplay"/>
+    <img src="{{assets}}/rienAafficher.png" class="nothingToDisplay"/>
   </div>
 
   <ion-list>
     <ion-item *ngFor="let post of (posts | async)" style="background:#fafafa">
       <ion-avatar item-start>
-        <img src="assets/img/content/{{ post.src }}"/>
+        <img src="{{assets}}/content/{{ post.src }}"/>
       </ion-avatar>
       <h2>{{ post.title }}</h2>
       <p>{{ post.text }}</p>
       <audio controls style="width:80%;">
-        <source src="assets/img/content/{{ post.optional }}" type="audio/mp3">
+        <source src="{{assets}}/content/{{ post.optional }}" type="audio/mp3">
       </audio>
     </ion-item>
   </ion-list>

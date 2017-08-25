@@ -9,11 +9,13 @@ import { Http } from '@angular/http';
 })
 export class HomePage {
   USER: Observable<any>;
+  assets: string;
   userMoney: number;
 
   posts: Observable<any>;
 
   constructor(public navCtrl: NavController, public apiProvider: ApiProvider, public loadingCtrl: LoadingController, public http: Http) {
+    this.assets = this.apiProvider.GetAssetsDomain();
     this.apiProvider.dailyConnectAward();
     this.LoadData();
   }

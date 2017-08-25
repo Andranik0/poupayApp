@@ -9,8 +9,9 @@ import { ApiProvider } from './../../providers/api/api';
 })
 export class BoukiBoutiquePage {
   USER: Observable<any>;
-  category: string;
   userMoney: number;
+  assets: string;
+  category: string;
 
   posts_images: Observable<any>;
   posts_videos: Observable<any>;
@@ -18,6 +19,7 @@ export class BoukiBoutiquePage {
   posts_audios: Observable<any>;
 
   constructor(public navCtrl: NavController, public apiProvider: ApiProvider, public viewCtrl: ViewController, public alertCtrl: AlertController) {
+    this.assets = this.apiProvider.GetAssetsDomain();
     this.LoadData();
 
     this.category = "images";
