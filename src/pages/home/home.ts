@@ -1,22 +1,24 @@
 import { Component } from '@angular/core';
-import { NavController, LoadingController} from 'ionic-angular';
+import { NavController, LoadingController } from 'ionic-angular';
 import { Observable } from 'rxjs/Observable';
 import { ApiProvider } from './../../providers/api/api';
-import { Http } from '@angular/http';
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
+  INIT_DATA: boolean = true;
   USER: Observable<any>;
   assets: string;
   userMoney: number;
 
   posts: Observable<any>;
 
-  constructor(public navCtrl: NavController, public apiProvider: ApiProvider, public loadingCtrl: LoadingController, public http: Http) {
+  constructor(public navCtrl: NavController, public apiProvider: ApiProvider, public loadingCtrl: LoadingController) {
     this.assets = this.apiProvider.GetAssetsDomain();
     this.apiProvider.dailyConnectAward();
+
     this.LoadData();
   }
 
@@ -30,11 +32,24 @@ export class HomePage {
   }
 
   LoadData() {
+    let loader = this.loadingCtrl.create({
+      content: "Attends un chouille, ma petite caille !"
+    });
+    if (this.INIT_DATA) {
+      loader.present();
+    }
+
     this.USER = this.apiProvider.getUser();
     this.USER.subscribe(data => {
       this.userMoney = data[0].money;
     });
     this.posts = this.apiProvider.getFeedPosts();
+    this.posts.subscribe(data => {
+      if (this.INIT_DATA) {
+        loader.dismiss();
+        this.INIT_DATA = false;
+      }
+    });
   }
 
   refreshPage() {
