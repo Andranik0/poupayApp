@@ -61,7 +61,7 @@ export class ApiProvider {
       if (data.affectedRows > 0) {
         let alert = this.alertCtrl.create({
           title: 'Bravo Poupay!',
-          subTitle: 'C\'est la première fois que tu te connectes aujourd\'hui, tu gagnes 1 pièce Bishoue !',
+          subTitle: 'C\'est la première fois que tu te connectes aujourd\'hui, tu gagnes 2 pièces Bishoue !',
           buttons: ['Ouaiiiis!']
         });
         alert.present();
